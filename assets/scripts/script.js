@@ -60,6 +60,7 @@ function clearRecente() {
         btnLimpaRecente.disabled = true;
         return;
     }
+    btnLimpaRecente.disabled = false;
     valorDisplay = valorDisplay.slice(0, -1);
     updateDisplay();
 }
@@ -79,7 +80,11 @@ function calcular() {
             result = prev * atual;
             break;
         case '/':
-            prev / 0 ? result = "NaN" : result = prev / atual;
+            if (atual === 0) {
+                result = "NaN";
+            } else {
+                result = prev / atual;
+            }
             break;
         default:
             return;
